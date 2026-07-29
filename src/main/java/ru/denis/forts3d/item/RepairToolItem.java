@@ -1,0 +1,3 @@
+package ru.denis.forts3d.item;
+import net.minecraft.core.BlockPos;import net.minecraft.server.level.ServerLevel;import net.minecraft.world.*;import net.minecraft.world.item.*;import net.minecraft.world.item.context.UseOnContext;
+public class RepairToolItem extends Item {public RepairToolItem(Properties p){super(p);} @Override public InteractionResult useOn(UseOnContext c){if(c.getLevel() instanceof ServerLevel sl){BlockPos p=c.getClickedPos();var state=sl.getBlockState(p);sl.levelEvent(2005,p,0);c.getItemInHand().hurtAndBreak(1,c.getPlayer(),net.minecraft.world.entity.EquipmentSlot.MAINHAND);}return InteractionResult.sidedSuccess(c.getLevel().isClientSide);}}
