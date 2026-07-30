@@ -11,7 +11,7 @@ import net.minecraft.world.phys.BlockHitResult;
 import ru.denis.forts3d.game.*;
 
 public class ReactorCoreBlock extends FortsStructureBlock {
-    public ReactorCoreBlock(Properties properties){super(properties,1000,100);}
+    public ReactorCoreBlock(Properties properties){super(properties,1000,100,true);}
     @Override public void setPlacedBy(Level level,BlockPos pos,BlockState state,net.minecraft.world.entity.LivingEntity placer,net.minecraft.world.item.ItemStack stack){super.setPlacedBy(level,pos,state,placer,stack);if(level instanceof ServerLevel sl&&placer!=null){var m=FortsMatchManager.get(sl.getServer());m.registerReactor(m.teamOf(placer.getUUID()),pos);}}
     @Override protected InteractionResult useWithoutItem(BlockState state,Level level,BlockPos pos,Player player,BlockHitResult hit){if(!level.isClientSide&&level instanceof ServerLevel sl){var m=FortsMatchManager.get(sl.getServer());var t=m.teamOf(player.getUUID());player.sendSystemMessage(Component.literal("§6Реактор "+t.id()+": §f"+m.reactorHealth(t)+" HP"));}return InteractionResult.sidedSuccess(level.isClientSide);}
 }
