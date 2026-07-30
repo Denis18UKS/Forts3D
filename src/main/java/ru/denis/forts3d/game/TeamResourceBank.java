@@ -15,6 +15,22 @@ public final class TeamResourceBank {
     public void addCapacity(long value){energyCapacity=Math.max(0,energyCapacity+value);energy=Math.min(energy,energyCapacity);}
     public boolean spend(long metalCost,long energyCost){if(metal<metalCost||energy<energyCost)return false;metal-=metalCost;energy-=energyCost;return true;}
     public boolean spendAmmo(long value){if(ammo<value)return false;ammo-=value;return true;}
+    /**
+     * Atomically pays all costs for an action.  Keeping this operation in the bank
+     * prevents weapons from consuming energy when their ammunition payment fails.
+     */
+    public boolean spend(long metalCost, long energyCost, long ammoCost) {
+        if (metalCost < 0 || energyCost < 0 || ammoCost < 0) {
+            throw new IllegalArgumentException("Resource costs cannot be negative");
+        }
+        if (metal < metalCost || energy < energyCost || ammo < ammoCost) {
+            return false;
+        }
+        metal -= metalCost;
+        energy -= energyCost;
+        ammo -= ammoCost;
+        return true;
+    }
     public boolean unlock(Technology tech){if(technologies.contains(tech)||!spend(tech.metal,tech.energy))return false;technologies.add(tech);return true;}
     public boolean has(Technology tech){return technologies.contains(tech);}
 }
