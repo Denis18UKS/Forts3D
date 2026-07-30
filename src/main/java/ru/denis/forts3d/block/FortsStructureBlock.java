@@ -11,7 +11,9 @@ import ru.denis.forts3d.game.*;
 
 public class FortsStructureBlock extends Block {
     private final int support, weight;
-    public FortsStructureBlock(Properties p,int support,int weight){super(p);this.support=support;this.weight=weight;}
-    @Override public void setPlacedBy(Level level, BlockPos pos, BlockState state, LivingEntity placer, ItemStack stack){super.setPlacedBy(level,pos,state,placer,stack);if(level instanceof ServerLevel sl){FortsTeam t=placer==null?FortsTeam.SPECTATOR:FortsMatchManager.get(sl.getServer()).teamOf(placer.getUUID());FortsMatchManager.get(sl.getServer()).structures().add(pos,t,support,weight);}}
+    private final boolean anchor;
+    public FortsStructureBlock(Properties p,int support,int weight){this(p,support,weight,false);}
+    public FortsStructureBlock(Properties p,int support,int weight,boolean anchor){super(p);this.support=support;this.weight=weight;this.anchor=anchor;}
+    @Override public void setPlacedBy(Level level, BlockPos pos, BlockState state, LivingEntity placer, ItemStack stack){super.setPlacedBy(level,pos,state,placer,stack);if(level instanceof ServerLevel sl){FortsTeam t=placer==null?FortsTeam.SPECTATOR:FortsMatchManager.get(sl.getServer()).teamOf(placer.getUUID());FortsMatchManager.get(sl.getServer()).structures().add(pos,t,support,weight,anchor);}}
     @Override public void onRemove(BlockState state,Level level,BlockPos pos,BlockState next,boolean moved){if(level instanceof ServerLevel sl&&!state.is(next.getBlock()))FortsMatchManager.get(sl.getServer()).structures().remove(pos);super.onRemove(state,level,pos,next,moved);}
 }
