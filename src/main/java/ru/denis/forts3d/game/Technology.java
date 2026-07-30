@@ -1,7 +1,42 @@
 package ru.denis.forts3d.game;
+
+/** Ordered Forts research tree. */
 public enum Technology {
-    WORKSHOP(100,150), FACTORY(250,300), MUNITIONS(200,250), ROCKETRY(500,700), LASERS(800,1200),
-    SHIELDS(1000,1500), RADAR(300,450), DRONES(700,900), ADVANCED_ARMOR(600,700);
-    public final int metal, energy;
-    Technology(int metal,int energy){this.metal=metal;this.energy=energy;}
+    WORKSHOP("Мастерская", 100, 150, null),
+    FACTORY("Завод", 250, 300, WORKSHOP),
+    MUNITIONS("Военная промышленность", 200, 250, WORKSHOP),
+    ROCKETRY("Ракетная техника", 500, 700, MUNITIONS),
+    LASERS("Лазерное оружие", 800, 1200, FACTORY),
+    SHIELDS("Силовые щиты", 1000, 1500, LASERS),
+    RADAR("Радиолокация", 300, 450, WORKSHOP),
+    DRONES("Боевые дроны", 700, 900, RADAR),
+    ADVANCED_ARMOR("Композитная броня", 600, 700, FACTORY);
+
+    private final String title;
+    private final int metal;
+    private final int energy;
+    private final Technology prerequisite;
+
+    Technology(String title, int metal, int energy, Technology prerequisite) {
+        this.title = title;
+        this.metal = metal;
+        this.energy = energy;
+        this.prerequisite = prerequisite;
+    }
+
+    public String title() {
+        return title;
+    }
+
+    public int metal() {
+        return metal;
+    }
+
+    public int energy() {
+        return energy;
+    }
+
+    public Technology prerequisite() {
+        return prerequisite;
+    }
 }

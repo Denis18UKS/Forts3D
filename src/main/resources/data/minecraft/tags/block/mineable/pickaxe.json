@@ -1,0 +1,21 @@
+{
+  "replace": false,
+  "values": [
+    "forts3d:reactor_core",
+    "forts3d:metal_beam",
+    "forts3d:armor_plate",
+    "forts3d:reinforced_glass",
+    "forts3d:foundation",
+    "forts3d:blast_door",
+    "forts3d:metal_mine",
+    "forts3d:battery",
+    "forts3d:munitions_plant",
+    "forts3d:power_cable",
+    "forts3d:repair_station",
+    "forts3d:research_console",
+    "forts3d:workshop",
+    "forts3d:factory",
+    "forts3d:radar",
+    "forts3d:shield_emitter"
+  ]
+}

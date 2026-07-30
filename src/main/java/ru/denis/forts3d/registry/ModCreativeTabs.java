@@ -19,6 +19,7 @@ public final class ModCreativeTabs {
             // Economy and power
             output.accept(ModItems.REACTOR_CORE); output.accept(ModItems.METAL_MINE); output.accept(ModItems.BATTERY);
             output.accept(ModItems.POWER_CABLE); output.accept(ModItems.REPAIR_STATION);
+            output.accept(ModItems.RESEARCH_CONSOLE);
             // Technology
             output.accept(ModItems.WORKSHOP); output.accept(ModItems.FACTORY); output.accept(ModItems.MUNITIONS_PLANT);
             output.accept(ModItems.RADAR); output.accept(ModItems.SHIELD_EMITTER);

@@ -1,7 +1,6 @@
 {
   "variants": {
-    "": {
-      "model": "forts3d:block/blast_door"
-    }
+    "open=false": {"model": "forts3d:block/blast_door"},
+    "open=true": {"model": "forts3d:block/blast_door_open"}
   }
 }
