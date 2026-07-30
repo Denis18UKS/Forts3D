@@ -13,7 +13,7 @@ public final class ModBlocks {
     public static final DeferredBlock<Block> METAL_BEAM=structure("metal_beam",12,40,30,8,SoundType.METAL);
     public static final DeferredBlock<Block> ARMOR_PLATE=structure("armor_plate",30,120,70,20,SoundType.METAL);
     public static final DeferredBlock<Block> REINFORCED_GLASS=structure("reinforced_glass",8,60,15,12,SoundType.GLASS);
-    public static final DeferredBlock<Block> FOUNDATION=structure("foundation",50,1200,500,100,SoundType.STONE);
+    public static final DeferredBlock<Block> FOUNDATION=anchoredStructure("foundation",50,1200,500,100,SoundType.STONE);
     public static final DeferredBlock<Block> BLAST_DOOR=BLOCKS.registerSimpleBlock("blast_door",BlockBehaviour.Properties.of().strength(25,200).sound(SoundType.METAL));
     public static final DeferredBlock<Block> METAL_MINE=BLOCKS.register("metal_mine",()->new ResourceMachineBlock(BlockBehaviour.Properties.of().strength(12,40).sound(SoundType.METAL),ResourceMachineBlock.Kind.METAL,5));
     public static final DeferredBlock<Block> BATTERY=BLOCKS.register("battery",()->new ResourceMachineBlock(BlockBehaviour.Properties.of().strength(8,30).sound(SoundType.METAL),ResourceMachineBlock.Kind.ENERGY,12));
@@ -26,5 +26,6 @@ public final class ModBlocks {
     public static final DeferredBlock<Block> SHIELD_EMITTER=simple("shield_emitter",20,100);
     private static DeferredBlock<Block> simple(String n,float s,float r){return BLOCKS.registerSimpleBlock(n,BlockBehaviour.Properties.of().strength(s,r).sound(SoundType.METAL));}
     private static DeferredBlock<Block> structure(String n,float s,float r,int support,int weight,SoundType sound){return BLOCKS.register(n,()->new FortsStructureBlock(BlockBehaviour.Properties.of().strength(s,r).sound(sound),support,weight));}
+    private static DeferredBlock<Block> anchoredStructure(String n,float s,float r,int support,int weight,SoundType sound){return BLOCKS.register(n,()->new FortsStructureBlock(BlockBehaviour.Properties.of().strength(s,r).sound(sound),support,weight,true));}
     private ModBlocks(){}
 }
