@@ -24,7 +24,7 @@ public final class ModBlocks {
     public static final DeferredBlock<Block> FACTORY=simple("factory",18,80);
     public static final DeferredBlock<Block> RADAR=simple("radar",10,40);
     public static final DeferredBlock<Block> SHIELD_EMITTER=simple("shield_emitter",20,100);
-    private static DeferredBlock<Block> simple(String n,float s,float r){return BLOCKS.registerSimpleBlock(n,BlockBehaviour.Properties.of().strength(s,r).sound(SoundType.METAL));}
+    private static DeferredBlock<Block> simple(String n,float s,float r){return BLOCKS.register(n,()->new FortsStructureBlock(BlockBehaviour.Properties.of().strength(s,r).sound(SoundType.METAL),50,30));}
     private static DeferredBlock<Block> structure(String n,float s,float r,int support,int weight,SoundType sound){return BLOCKS.register(n,()->new FortsStructureBlock(BlockBehaviour.Properties.of().strength(s,r).sound(sound),support,weight));}
     private static DeferredBlock<Block> anchoredStructure(String n,float s,float r,int support,int weight,SoundType sound){return BLOCKS.register(n,()->new FortsStructureBlock(BlockBehaviour.Properties.of().strength(s,r).sound(sound),support,weight,true));}
     private ModBlocks(){}

@@ -9,6 +9,7 @@ public final class StructureRegistry {
     private final Map<BlockPos, Node> nodes = new ConcurrentHashMap<>();
     public void add(BlockPos pos,FortsTeam team,int support,int weight,boolean anchor){nodes.put(pos.immutable(),new Node(pos.immutable(),team,support,weight,anchor));}
     public void remove(BlockPos pos){nodes.remove(pos);}
+    public void clear(){nodes.clear();}
     public Collection<Node> nodes(){return List.copyOf(nodes.values());}
     public FortsTeam ownerAt(BlockPos pos){Node node=nodes.get(pos);return node==null?FortsTeam.SPECTATOR:node.team();}
     public List<BlockPos> unsupported(){
